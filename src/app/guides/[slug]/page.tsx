@@ -84,7 +84,7 @@ export default async function GuidePage({ params }: PageProps) {
         ))}
       </div>
 
-      <CopyChecklist items={guide.checklist} />
+      <CopyChecklist items={guide.checklist} title={guide.checklistTitle ?? "Checklist"} />
 
       <aside className="rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-4">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">

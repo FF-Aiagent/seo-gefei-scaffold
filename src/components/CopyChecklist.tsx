@@ -4,9 +4,10 @@ import { useState } from "react";
 
 type Props = {
   items: string[];
+  title?: string;
 };
 
-export function CopyChecklist({ items }: Props) {
+export function CopyChecklist({ items, title = "Checklist" }: Props) {
   const [copied, setCopied] = useState(false);
 
   async function onCopy() {
@@ -23,7 +24,7 @@ export function CopyChecklist({ items }: Props) {
   return (
     <section className="space-y-4 rounded-lg border border-zinc-200 bg-white px-4 py-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-lg font-semibold text-zinc-900">OG image checklist</h2>
+        <h2 className="text-lg font-semibold text-zinc-900">{title}</h2>
         <button
           type="button"
           onClick={onCopy}

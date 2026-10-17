@@ -12,6 +12,8 @@ export type Guide = {
   publishedAt: string;
   body: string[];
   checklist: string[];
+  /** Checklist section heading; defaults to "Checklist" in CopyChecklist. */
+  checklistTitle?: string;
   /** When false, page stays reachable but is omitted from home + sitemap. */
   listed: boolean;
 };
@@ -25,6 +27,7 @@ export const guides: Guide[] = [
       "How to resize a PNG to 1200×630 for social OG previews—steps, aspect ratio, and export checklist.",
     publishedAt: "2026-10-17",
     listed: true,
+    checklistTitle: "OG image checklist",
     body: [
       "Most social Open Graph (OG) cards look best when the image is about 1200×630 pixels—roughly a 1.91:1 frame. A PNG you already have is often a different size, so resizing (and usually a center crop) is the fastest way to stop platforms from clipping heads, text, or logos.",
       "Why 1200×630: it matches the common OG recommendation and leaves a little headroom for platforms that crop tighter. Keep the subject and any text inside a center safe area; edges are the first to disappear when a network crops differently.",
@@ -42,12 +45,13 @@ export const guides: Guide[] = [
   },
   {
     slug: "make-scanned-pdf-searchable",
-    title: "Make Scanned PDF Searchable (Free Guide)",
-    h1: "Make a scanned PDF searchable",
+    title: "Make a Scanned PDF Searchable (OCR Guide)",
+    h1: "Make a Scanned PDF Searchable",
     description:
-      "How to turn a scanned PDF into a searchable, selectable-text PDF—OCR steps, export checklist, and common pitfalls. No upload on this page.",
+      "Turn a scanned PDF into a searchable document—steps, OCR checklist, and common pitfalls.",
     publishedAt: "2026-10-17",
     listed: true,
+    checklistTitle: "Searchable PDF checklist",
     body: [
       "A “searchable PDF” is still a PDF of pages, but it also has a hidden text layer from OCR (optical character recognition). That layer is what lets you find words with Ctrl/Cmd+F, select and copy phrases, and let screen readers or indexers see the content—not just a picture of it.",
       "A fresh scan is usually image-only: each page is a bitmap with no text underneath. That is why search returns nothing even when the words look clear on screen. You need an OCR pass that keeps the page images and adds a matching text layer aligned to those images.",
