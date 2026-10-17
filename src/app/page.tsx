@@ -22,12 +22,12 @@ export default function HomePage() {
           Free guides
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-          Resize PNGs for Open Graph
+          Free guides for OG images and searchable PDFs
         </h1>
         <p className="max-w-2xl text-lg leading-relaxed text-zinc-600">
-          Practical English guides for social preview images. Start with resizing
-          a PNG to 1200×630—steps, aspect ratio, and a copyable checklist. No
-          upload tool on this page.
+          Practical English guides—resize a PNG to 1200×630 for social previews,
+          or make a scanned PDF searchable with OCR. Steps and copyable
+          checklists. No upload tool on these pages.
         </p>
       </section>
 
@@ -55,9 +55,8 @@ export default function HomePage() {
       <section className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 px-4 py-5 text-sm text-zinc-600">
         <p className="font-medium text-zinc-800">Coming next</p>
         <ul className="mt-2 list-inside list-disc space-y-1">
-          <li>Guide #4 reserved (not published yet)</li>
-          <li>Optional PNG→OG converter tool (separate from this guide)</li>
-          <li>Search Console after custom domain + watering gate</li>
+          <li>More long-tail guide shells (not published yet)</li>
+          <li>Optional PNG→OG converter tool (separate from these guides)</li>
         </ul>
       </section>
     </div>

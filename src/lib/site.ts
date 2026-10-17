@@ -13,4 +13,4 @@ export function getSiteUrl(): string {
 export const SITE_NAME = "OG Image Guides";
 
 export const SITE_DESCRIPTION =
-  "Free English guides for Open Graph images—resize a PNG to 1200×630 and ship social previews that crop cleanly.";
+  "Free English guides for Open Graph images and searchable PDFs—resize a PNG to 1200×630, OCR a scanned PDF, and ship with a clear checklist.";

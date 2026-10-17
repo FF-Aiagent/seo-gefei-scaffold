@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyChecklist } from "@/components/CopyChecklist";
-import { getAllGuideSlugs, getGuideBySlug } from "@/content/guides";
+import {
+  getAllGuideSlugs,
+  getGuideBySlug,
+  getListedGuides,
+} from "@/content/guides";
 import { getSiteUrl } from "@/lib/site";
 
 type PageProps = {
@@ -50,6 +54,8 @@ export default async function GuidePage({ params }: PageProps) {
     notFound();
   }
 
+  const related = getListedGuides().filter((g) => g.slug !== guide.slug);
+
   return (
     <article className="space-y-8">
       <header className="space-y-3 border-b border-zinc-200 pb-6">
@@ -84,9 +90,24 @@ export default async function GuidePage({ params }: PageProps) {
         <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Related guides
         </h2>
-        <p className="mt-2 text-sm text-zinc-500">
-          Slot reserved for the next long-tail guide (#4) — not published yet.
-        </p>
+        {related.length > 0 ? (
+          <ul className="mt-2 space-y-2">
+            {related.map((g) => (
+              <li key={g.slug}>
+                <Link
+                  href={`/guides/${g.slug}`}
+                  className="text-sm font-medium text-zinc-800 underline-offset-2 hover:underline"
+                >
+                  {g.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-2 text-sm text-zinc-500">
+            More guides coming soon.
+          </p>
+        )}
         <p className="mt-3 text-sm">
           <Link
             href="/"

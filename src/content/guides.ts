@@ -1,6 +1,7 @@
 /**
- * Primary long-tail: N1 resize png to 1200x630 (page live, watering gate closed).
- * #3 shell kept live but unlisted (no home/nav link).
+ * Primary long-tails: N1 resize png to 1200x630; R2-2 make scanned pdf searchable.
+ * #3 shell kept live but unlisted (no home/nav/sitemap link).
+ * Watering/KGR gate stays closed.
  */
 
 export type Guide = {
@@ -37,6 +38,29 @@ export const guides: Guide[] = [
       "Exported file is under ~1 MB (PNG or JPEG)",
       "og:image uses an absolute HTTPS URL",
       "After replace, purge CDN / social cache if the old preview sticks",
+    ],
+  },
+  {
+    slug: "make-scanned-pdf-searchable",
+    title: "Make Scanned PDF Searchable (Free Guide)",
+    h1: "Make a scanned PDF searchable",
+    description:
+      "How to turn a scanned PDF into a searchable, selectable-text PDF—OCR steps, export checklist, and common pitfalls. No upload on this page.",
+    publishedAt: "2026-10-17",
+    listed: true,
+    body: [
+      "A “searchable PDF” is still a PDF of pages, but it also has a hidden text layer from OCR (optical character recognition). That layer is what lets you find words with Ctrl/Cmd+F, select and copy phrases, and let screen readers or indexers see the content—not just a picture of it.",
+      "A fresh scan is usually image-only: each page is a bitmap with no text underneath. That is why search returns nothing even when the words look clear on screen. You need an OCR pass that keeps the page images and adds a matching text layer aligned to those images.",
+      "Practical steps with common desktop tools: (1) open the scan in Preview (macOS), Adobe Acrobat, or a reputable online OCR that supports PDF out, (2) run “Recognize Text” / OCR and pick the right language pack, (3) export or save as a searchable PDF (not a flat image-only re-export), (4) spot-check a few pages by selecting text and running a search for an unusual word from the document. You do not need any specific paid product—use whatever you already have that can OCR to PDF.",
+      "Common pitfalls: exporting as image-only again so the text layer vanishes; ballooning file size from uncompressed page images; wrong language pack so OCR gibberish replaces real words; sending sensitive scans to a random online converter. Keep the original scan as a backup before you overwrite anything.",
+      "Use the copyable checklist below before you archive or share the file. This URL is a free guide only—no upload or OCR tool on this page.",
+    ],
+    checklist: [
+      "OCR text layer is present (search finds words on the page)",
+      "Text is selectable and copyable, not image-only",
+      "OCR language pack matches the document",
+      "File size is reasonable after export (not multi‑hundred MB by accident)",
+      "Original scan kept as a backup before overwrite",
     ],
   },
   {
