@@ -1,5 +1,6 @@
 /**
- * Primary long-tails: N1 resize png to 1200x630; R2-2 make scanned pdf searchable.
+ * Primary long-tails: N1 resize png to 1200x630; R2-2 make scanned pdf searchable;
+ * S1 resize png to 1200x630 for Facebook (guide shell).
  * #3 shell kept live but unlisted (no home/nav/sitemap link).
  * Watering/KGR gate stays closed.
  */
@@ -65,6 +66,30 @@ export const guides: Guide[] = [
       "OCR language pack matches the document",
       "File size is reasonable after export (not multi‑hundred MB by accident)",
       "Original scan kept as a backup before overwrite",
+    ],
+  },
+  {
+    slug: "resize-png-to-1200x630-for-facebook",
+    title: "Resize PNG to 1200x630 for Facebook (Free Guide)",
+    h1: "Resize a PNG to 1200×630 for Facebook",
+    description:
+      "Resize a PNG to Facebook’s 1200×630 Open Graph size—steps, checklist, and common pitfalls.",
+    publishedAt: "2026-10-17",
+    listed: true,
+    checklistTitle: "Facebook 1200×630 checklist",
+    body: [
+      "Facebook link previews (and many Open Graph cards shared into Facebook) look sharpest when the image is 1200×630 pixels—about a 1.91:1 frame. If your PNG is a different size, Facebook may crop awkwardly or leave empty bars, so resizing to that OG size before you publish is the quickest fix.",
+      "Why 1200×630: it matches Facebook’s common Open Graph recommendation for link shares. Keep the subject and any text inside a center safe area; Facebook and related surfaces can crop tighter than the full frame, so edges are the first to disappear.",
+      "Steps: (1) open your PNG in any image editor, (2) crop or letterbox to a 1.91:1 ratio without stretching faces or logos, (3) scale to exactly 1200×630, (4) keep the subject centered, (5) export a web-friendly PNG (or JPEG if you do not need transparency) and host it on HTTPS for og:image.",
+      "Transparent PNG caveats: Facebook’s preview pipeline may flatten transparency onto a solid background, so checkerboard “holes” can become white or dark slabs. If the design relies on alpha, flatten onto the intended background before export, or switch to JPEG when transparency is not required.",
+      "Common pitfalls: stretching instead of cropping; critical text on the far edges; a multi‑MB file that crawlers skip; forgetting to spot-check the Facebook Sharing Debugger / link preview after you replace the image. This URL is a free guide only—no upload or resize tool on this page.",
+    ],
+    checklist: [
+      "Output is exactly 1200×630 (or Facebook accepts it as OG)",
+      "Important content stays inside safe margins (not cropped at edges)",
+      "PNG transparency handled (flatten or keep as intended)",
+      "File size reasonable for sharing",
+      "Spot-check the link preview before publishing",
     ],
   },
   {
