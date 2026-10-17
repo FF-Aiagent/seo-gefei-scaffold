@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { guides } from "@/content/guides";
+import { getListedGuides } from "@/content/guides";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const listed = getListedGuides();
+
   return (
     <div className="space-y-10">
       <section className="space-y-4">
@@ -20,12 +22,12 @@ export default function HomePage() {
           Free guides
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-          Create better Open Graph images
+          Resize PNGs for Open Graph
         </h1>
         <p className="max-w-2xl text-lg leading-relaxed text-zinc-600">
-          Practical English guides for social preview images. First up: how to
-          create an Open Graph image from a PNG—size, steps, and a copyable
-          checklist. No upload tool on this page.
+          Practical English guides for social preview images. Start with resizing
+          a PNG to 1200×630—steps, aspect ratio, and a copyable checklist. No
+          upload tool on this page.
         </p>
       </section>
 
@@ -34,7 +36,7 @@ export default function HomePage() {
           Guides
         </h2>
         <ul className="divide-y divide-zinc-200 rounded-lg border border-zinc-200 bg-white">
-          {guides.map((guide) => (
+          {listed.map((guide) => (
             <li key={guide.slug}>
               <Link
                 href={`/guides/${guide.slug}`}
@@ -55,7 +57,7 @@ export default function HomePage() {
         <ul className="mt-2 list-inside list-disc space-y-1">
           <li>Guide #4 reserved (not published yet)</li>
           <li>Optional PNG→OG converter tool (separate from this guide)</li>
-          <li>Search Console after custom domain</li>
+          <li>Search Console after custom domain + watering gate</li>
         </ul>
       </section>
     </div>

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { guides } from "@/content/guides";
+import { getListedGuides } from "@/content/guides";
 import { getSiteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const guideEntries: MetadataRoute.Sitemap = guides.map((guide) => ({
+  const guideEntries: MetadataRoute.Sitemap = getListedGuides().map((guide) => ({
     url: `${base}/guides/${guide.slug}`,
     lastModified: guide.publishedAt,
     changeFrequency: "monthly" as const,
