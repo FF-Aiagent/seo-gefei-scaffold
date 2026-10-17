@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CopyChecklist } from "@/components/CopyChecklist";
 import { getAllGuideSlugs, getGuideBySlug } from "@/content/guides";
 import { getSiteUrl } from "@/lib/site";
 
@@ -60,7 +61,7 @@ export default async function GuidePage({ params }: PageProps) {
           <span>Guides</span>
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">
-          {guide.title}
+          {guide.h1}
         </h1>
         <p className="text-zinc-600">{guide.description}</p>
         <time
@@ -71,30 +72,29 @@ export default async function GuidePage({ params }: PageProps) {
         </time>
       </header>
 
-      <div className="prose-guide">
+      <div className="prose-guide space-y-4 text-zinc-700 leading-relaxed">
         {guide.body.map((paragraph, i) => (
           <p key={i}>{paragraph}</p>
         ))}
       </div>
+
+      <CopyChecklist items={guide.checklist} />
 
       <aside className="rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-4">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
           Related guides
         </h2>
         <p className="mt-2 text-sm text-zinc-500">
-          Internal-link slot — add sibling guides here after more pages ship.
+          Slot reserved for the next long-tail guide (#4) — not published yet.
         </p>
-        <ul className="mt-3 space-y-1 text-sm">
-          <li>
-            <Link
-              href="/guides/hello-world"
-              className="text-zinc-800 underline-offset-2 hover:underline"
-            >
-              Hello World — Placeholder Guide
-            </Link>
-          </li>
-          {/* Slot: next long-tail guide */}
-        </ul>
+        <p className="mt-3 text-sm">
+          <Link
+            href="/"
+            className="text-zinc-800 underline-offset-2 hover:underline"
+          >
+            ← Back to home
+          </Link>
+        </p>
       </aside>
     </article>
   );
