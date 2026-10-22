@@ -12,19 +12,12 @@ export function Header() {
           {SITE_NAME}
         </Link>
         <nav aria-label="Primary" className="flex items-center gap-4 text-sm text-zinc-600">
-          {/* Internal-link slots — wire when more sections exist */}
           <Link href="/" className="hover:text-zinc-900">
             Home
           </Link>
-          <Link href="/guides/hello-world" className="hover:text-zinc-900">
+          <Link href="/#guides-heading" className="hover:text-zinc-900">
             Guides
           </Link>
-          <span className="hidden text-zinc-400 sm:inline" title="Reserved nav slot">
-            {/* Slot: Tools */}
-          </span>
-          <span className="hidden text-zinc-400 sm:inline" title="Reserved nav slot">
-            {/* Slot: About */}
-          </span>
         </nav>
       </div>
     </header>

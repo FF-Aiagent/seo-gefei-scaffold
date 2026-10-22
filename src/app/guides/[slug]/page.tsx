@@ -64,7 +64,9 @@ export default async function GuidePage({ params }: PageProps) {
             Home
           </Link>
           <span aria-hidden="true"> / </span>
-          <span>Guides</span>
+          <Link href="/#guides-heading" className="hover:text-zinc-800">
+            Guides
+          </Link>
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">
           {guide.h1}
