@@ -22,12 +22,13 @@ export default function HomePage() {
           Free guides
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
-          Free guides for OG images and searchable PDFs
+          Free guides for OG images, searchable PDFs, and keyword density
         </h1>
         <p className="max-w-2xl text-lg leading-relaxed text-zinc-600">
           Practical English guides—resize a PNG to 1200×630 for social previews,
-          or make a scanned PDF searchable with OCR. Steps and copyable
-          checklists. No upload tool on these pages.
+          make a scanned PDF searchable with OCR, or check keyword density in
+          your draft. Steps, copyable checklists, and a browser-only density
+          form. No account required.
         </p>
       </section>
 

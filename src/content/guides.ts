@@ -1,8 +1,9 @@
 /**
  * Primary long-tails: N1 resize png to 1200x630; R2-2 make scanned pdf searchable;
- * S1 resize png to 1200x630 for Facebook (guide shell).
+ * S1 resize png to 1200x630 for Facebook (guide shell);
+ * X3 keyword density analyzer (guide shell + local density form).
  * #3 shell kept live but unlisted (no home/nav/sitemap link).
- * Watering/KGR gate stays closed.
+ * Watering/KGR gate stays closed (KGR 待核 for X3).
  */
 
 export type Guide = {
@@ -17,6 +18,8 @@ export type Guide = {
   checklistTitle?: string;
   /** When false, page stays reachable but is omitted from home + sitemap. */
   listed: boolean;
+  /** Optional above-fold client tool rendered on the guide page. */
+  tool?: "keyword-density";
 };
 
 export const guides: Guide[] = [
@@ -90,6 +93,31 @@ export const guides: Guide[] = [
       "PNG transparency handled (flatten or keep as intended)",
       "File size reasonable for sharing",
       "Spot-check the link preview before publishing",
+    ],
+  },
+  {
+    slug: "keyword-density-analyzer",
+    title: "Keyword Density Analyzer (Free)",
+    h1: "Keyword Density Analyzer (Free)",
+    description:
+      "Paste your draft, pick a target keyword, and see occurrence count and density in your browser—no upload.",
+    publishedAt: "2026-10-22",
+    listed: true,
+    tool: "keyword-density",
+    checklistTitle: "Keyword density checklist",
+    body: [
+      "A keyword density analyzer counts how often a target phrase appears in a block of text, then divides that by the total word count. Writers use it as a quick sanity check before publishing—not as a ranking score. Search engines care far more about clear topical coverage than a magic percentage.",
+      "How to read the numbers: paste the body you plan to publish, enter the exact phrase you care about (one word or a short multi-word term), and compare occurrences against total words. Density is shown as a percentage: (occurrences ÷ total words) × 100. Multi-word targets are matched as a contiguous phrase, case-insensitive.",
+      "What “good” looks like: there is no universal ideal density. Aim for natural phrasing. If the same exact phrase repeats in every sentence, you are likely stuffing—trim repeats and use related wording instead. If the phrase never appears, the page may not clearly signal the topic you intended.",
+      "Common pitfalls: counting HTML or nav chrome as body copy; chasing a competitor’s percentage instead of readability; stuffing exact-match anchors; ignoring synonyms and related terms that readers expect. Density is a local writing aid, not a substitute for useful content.",
+      "Use the form above for a private, browser-only count, then copy the checklist before you ship. This URL does not crawl sites, upload files, or store your draft.",
+    ],
+    checklist: [
+      "Target phrase appears at least once in a natural sentence",
+      "Exact-match repeats do not dominate every paragraph",
+      "Related terms / synonyms appear where they help the reader",
+      "Title and H1 use the intended phrase without stuffing",
+      "You skimmed the draft aloud—it still reads like English, not a keyword list",
     ],
   },
   {

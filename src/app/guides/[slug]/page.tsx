@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyChecklist } from "@/components/CopyChecklist";
+import { KeywordDensityForm } from "@/components/KeywordDensityForm";
 import {
   getAllGuideSlugs,
   getGuideBySlug,
@@ -79,6 +80,8 @@ export default async function GuidePage({ params }: PageProps) {
           Updated {guide.publishedAt}
         </time>
       </header>
+
+      {guide.tool === "keyword-density" ? <KeywordDensityForm /> : null}
 
       <div className="prose-guide space-y-4 text-zinc-700 leading-relaxed">
         {guide.body.map((paragraph, i) => (
