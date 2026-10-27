@@ -22,7 +22,7 @@ export type Guide = {
   listed: boolean;
   /** Optional above-fold client tool rendered on the guide page. */
   tool?: "keyword-density";
-  /** Topic cluster for 经纬 related links (same = Related guides; other = Related tools). */
+  /** Topic cluster for 经纬 related links (same = Related guides; other = Other guides). */
   cluster?: GuideCluster;
   /** Short intent-bearing anchor for related links; falls back to title. */
   relatedAnchor?: string;
@@ -38,7 +38,7 @@ export const guides: Guide[] = [
     publishedAt: "2026-10-17",
     listed: true,
     cluster: "og",
-    relatedAnchor: "Resize PNG to 1200×630 for Open Graph",
+    relatedAnchor: "Open Graph 1200×630",
     checklistTitle: "OG image checklist",
     body: [
       "Most social Open Graph (OG) cards look best when the image is about 1200×630 pixels—roughly a 1.91:1 frame. A PNG you already have is often a different size, so resizing (and usually a center crop) is the fastest way to stop platforms from clipping heads, text, or logos.",
@@ -90,7 +90,7 @@ export const guides: Guide[] = [
     publishedAt: "2026-10-17",
     listed: true,
     cluster: "og",
-    relatedAnchor: "Resize PNG to 1200×630 for Facebook",
+    relatedAnchor: "Facebook 1200×630",
     checklistTitle: "Facebook 1200×630 checklist",
     body: [
       "Facebook link previews (and many Open Graph cards shared into Facebook) look sharpest when the image is 1200×630 pixels—about a 1.91:1 frame. If your PNG is a different size, Facebook may crop awkwardly or leave empty bars, so resizing to that OG size before you publish is the quickest fix.",

@@ -160,7 +160,7 @@ export default async function GuidePage({ params }: PageProps) {
         {otherClusters.length > 0 ? (
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
-              Related tools
+              Other guides
             </h2>
             <GuideLinkList guides={otherClusters} />
           </div>

@@ -10,7 +10,7 @@ export function getSiteUrl(): string {
   return "http://localhost:3000";
 }
 
-export const SITE_NAME = "OG Image Guides";
+export const SITE_NAME = "Practical Guides";
 
 export const SITE_DESCRIPTION =
   "Free English guides for Open Graph images, searchable PDFs, and keyword density—resize a PNG to 1200×630, OCR a scanned PDF, analyze keyword density in your browser, and ship with a clear checklist.";
