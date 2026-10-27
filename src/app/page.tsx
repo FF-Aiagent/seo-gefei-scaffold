@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getListedGuides } from "@/content/guides";
-import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: SITE_NAME },
   description: SITE_DESCRIPTION,
+  alternates: { canonical: getSiteUrl() },
   openGraph: {
     title: SITE_NAME,
     description: SITE_DESCRIPTION,

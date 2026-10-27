@@ -6,6 +6,8 @@
  * Watering/KGR gate stays closed (KGR 待核 for X3).
  */
 
+export type GuideCluster = "og" | "pdf" | "keyword";
+
 export type Guide = {
   slug: string;
   title: string;
@@ -20,6 +22,10 @@ export type Guide = {
   listed: boolean;
   /** Optional above-fold client tool rendered on the guide page. */
   tool?: "keyword-density";
+  /** Topic cluster for 经纬 related links (same = Related guides; other = Related tools). */
+  cluster?: GuideCluster;
+  /** Short intent-bearing anchor for related links; falls back to title. */
+  relatedAnchor?: string;
 };
 
 export const guides: Guide[] = [
@@ -31,6 +37,8 @@ export const guides: Guide[] = [
       "How to resize a PNG to 1200×630 for social OG previews—steps, aspect ratio, and export checklist.",
     publishedAt: "2026-10-17",
     listed: true,
+    cluster: "og",
+    relatedAnchor: "Resize PNG to 1200×630 for Open Graph",
     checklistTitle: "OG image checklist",
     body: [
       "Most social Open Graph (OG) cards look best when the image is about 1200×630 pixels—roughly a 1.91:1 frame. A PNG you already have is often a different size, so resizing (and usually a center crop) is the fastest way to stop platforms from clipping heads, text, or logos.",
@@ -55,6 +63,8 @@ export const guides: Guide[] = [
       "Turn a scanned PDF into a searchable document—steps, OCR checklist, and common pitfalls.",
     publishedAt: "2026-10-17",
     listed: true,
+    cluster: "pdf",
+    relatedAnchor: "Make a scanned PDF searchable",
     checklistTitle: "Searchable PDF checklist",
     body: [
       "A “searchable PDF” is still a PDF of pages, but it also has a hidden text layer from OCR (optical character recognition). That layer is what lets you find words with Ctrl/Cmd+F, select and copy phrases, and let screen readers or indexers see the content—not just a picture of it.",
@@ -79,6 +89,8 @@ export const guides: Guide[] = [
       "Resize a PNG to Facebook’s 1200×630 Open Graph size—steps, checklist, and common pitfalls.",
     publishedAt: "2026-10-17",
     listed: true,
+    cluster: "og",
+    relatedAnchor: "Resize PNG to 1200×630 for Facebook",
     checklistTitle: "Facebook 1200×630 checklist",
     body: [
       "Facebook link previews (and many Open Graph cards shared into Facebook) look sharpest when the image is 1200×630 pixels—about a 1.91:1 frame. If your PNG is a different size, Facebook may crop awkwardly or leave empty bars, so resizing to that OG size before you publish is the quickest fix.",
@@ -103,6 +115,8 @@ export const guides: Guide[] = [
       "Paste your draft, pick a target keyword, and see occurrence count and density in your browser—no upload.",
     publishedAt: "2026-10-22",
     listed: true,
+    cluster: "keyword",
+    relatedAnchor: "Keyword density analyzer",
     tool: "keyword-density",
     checklistTitle: "Keyword density checklist",
     body: [
@@ -128,6 +142,8 @@ export const guides: Guide[] = [
       "Turn a PNG into a correctly sized Open Graph image for social previews. Steps, size checklist, and common mistakes—no design tool required.",
     publishedAt: "2026-10-17",
     listed: false,
+    cluster: "og",
+    relatedAnchor: "Create Open Graph image from PNG",
     body: [
       "Open Graph (OG) images are the preview pictures that show up when someone shares your link on social platforms. A PNG you already have often needs a crop or resize before it looks right in those cards—wrong aspect ratio gets clipped, and oversized files slow the preview.",
       "Size checklist: aim for at least 1200×630 pixels (roughly 1.91:1). Many platforms crop differently around that frame, so keep important text and faces inside a safe center area and avoid putting critical detail on the far edges.",
@@ -155,4 +171,8 @@ export function getAllGuideSlugs(): string[] {
 
 export function getListedGuides(): Guide[] {
   return guides.filter((g) => g.listed);
+}
+
+export function relatedAnchorText(guide: Guide): string {
+  return guide.relatedAnchor ?? guide.title;
 }

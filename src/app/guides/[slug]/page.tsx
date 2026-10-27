@@ -7,6 +7,8 @@ import {
   getAllGuideSlugs,
   getGuideBySlug,
   getListedGuides,
+  relatedAnchorText,
+  type Guide,
 } from "@/content/guides";
 import { getSiteUrl } from "@/lib/site";
 
@@ -48,6 +50,23 @@ export async function generateMetadata({
   };
 }
 
+function GuideLinkList({ guides }: { guides: Guide[] }) {
+  return (
+    <ul className="mt-2 space-y-2">
+      {guides.map((g) => (
+        <li key={g.slug}>
+          <Link
+            href={`/guides/${g.slug}`}
+            className="text-sm font-medium text-zinc-800 underline-offset-2 hover:underline"
+          >
+            {relatedAnchorText(g)}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default async function GuidePage({ params }: PageProps) {
   const { slug } = await params;
   const guide = getGuideBySlug(slug);
@@ -55,10 +74,47 @@ export default async function GuidePage({ params }: PageProps) {
     notFound();
   }
 
-  const related = getListedGuides().filter((g) => g.slug !== guide.slug);
+  const others = getListedGuides().filter((g) => g.slug !== guide.slug);
+  const sameCluster = others.filter(
+    (g) => guide.cluster && g.cluster === guide.cluster,
+  );
+  const otherClusters = others.filter(
+    (g) => !guide.cluster || g.cluster !== guide.cluster,
+  );
+
+  const siteUrl = getSiteUrl();
+  const pageUrl = `${siteUrl}/guides/${guide.slug}`;
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Guides",
+        item: `${siteUrl}/#guides-heading`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: guide.title,
+        item: pageUrl,
+      },
+    ],
+  };
 
   return (
     <article className="space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       <header className="space-y-3 border-b border-zinc-200 pb-6">
         <p className="text-sm text-zinc-500">
           <Link href="/" className="hover:text-zinc-800">
@@ -91,29 +147,30 @@ export default async function GuidePage({ params }: PageProps) {
 
       <CopyChecklist items={guide.checklist} title={guide.checklistTitle ?? "Checklist"} />
 
-      <aside className="rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-4">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
-          Related guides
-        </h2>
-        {related.length > 0 ? (
-          <ul className="mt-2 space-y-2">
-            {related.map((g) => (
-              <li key={g.slug}>
-                <Link
-                  href={`/guides/${g.slug}`}
-                  className="text-sm font-medium text-zinc-800 underline-offset-2 hover:underline"
-                >
-                  {g.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-2 text-sm text-zinc-500">
-            More guides coming soon.
-          </p>
-        )}
-        <p className="mt-3 text-sm">
+      <aside className="space-y-4 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-4">
+        {sameCluster.length > 0 ? (
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+              Related guides
+            </h2>
+            <GuideLinkList guides={sameCluster} />
+          </div>
+        ) : null}
+
+        {otherClusters.length > 0 ? (
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+              Related tools
+            </h2>
+            <GuideLinkList guides={otherClusters} />
+          </div>
+        ) : null}
+
+        {sameCluster.length === 0 && otherClusters.length === 0 ? (
+          <p className="text-sm text-zinc-500">More guides coming soon.</p>
+        ) : null}
+
+        <p className="text-sm">
           <Link
             href="/"
             className="text-zinc-800 underline-offset-2 hover:underline"
