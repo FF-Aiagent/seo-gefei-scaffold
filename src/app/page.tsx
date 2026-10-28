@@ -61,25 +61,27 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section className="space-y-3" aria-labelledby="og-guides-heading">
-        <h2
-          id="og-guides-heading"
-          className="text-lg font-semibold text-zinc-900"
-        >
-          OG image guides
-        </h2>
-        <GuideList guides={ogGuides} />
-      </section>
+      <div id="guides-heading" className="space-y-10">
+        <section className="space-y-3" aria-labelledby="og-guides-heading">
+          <h2
+            id="og-guides-heading"
+            className="text-lg font-semibold text-zinc-900"
+          >
+            OG image guides
+          </h2>
+          <GuideList guides={ogGuides} />
+        </section>
 
-      <section className="space-y-3" aria-labelledby="other-guides-heading">
-        <h2
-          id="other-guides-heading"
-          className="text-lg font-semibold text-zinc-900"
-        >
-          Other free guides
-        </h2>
-        <GuideList guides={otherGuides} />
-      </section>
+        <section className="space-y-3" aria-labelledby="other-guides-heading">
+          <h2
+            id="other-guides-heading"
+            className="text-lg font-semibold text-zinc-900"
+          >
+            Other free guides
+          </h2>
+          <GuideList guides={otherGuides} />
+        </section>
+      </div>
 
       <section className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 px-4 py-5 text-sm text-zinc-600">
         <p className="font-medium text-zinc-800">Coming next</p>
