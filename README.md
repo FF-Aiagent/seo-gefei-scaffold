@@ -66,3 +66,7 @@ npm run lint     # ESLint
 - Real long-tail keyword content
 - Cloning `seo.web.cafe` tool suite
 - Changes to `ai-web-workflow`
+
+## Ops paper (not site content)
+
+- [Sitemap peers + guide↔spec checklist (2026-11-03)](docs/seo-paper-prep-sitemap-spec-2026-11-03.md)
